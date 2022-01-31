@@ -16,4 +16,6 @@ def run():
 
     print(stations_in_ten)
 
-run()
+if __name__ == "__main__":
+    print("*** Task 1C: CUED Part IA Flood Warning System ***")
+    run()
