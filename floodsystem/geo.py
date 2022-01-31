@@ -13,8 +13,6 @@ from floodsystem.stationdata import build_station_list
 from .utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 
-stations = build_station_list()
-
 def stations_by_distance(stations, p):
     """Finds the distance from a coordinate 'p' to the stations, and orders it with the closest first"""
     name_distance_list = []
@@ -24,10 +22,9 @@ def stations_by_distance(stations, p):
         distance = float(haversine(coord, p))  #forms a float of the distance .....
 
         name_distance_tuple = (name, distance)
-        name_distance_list.append(name_distance_tuple)
+        name_distance_list.append(name_distance_tuple)  #forms the list
 
-    sorted_name_distance = sorted_by_key(name_distance_list, 1)
+    sorted_name_distance = sorted_by_key(name_distance_list, 1)  #orders the list
 
     return sorted_name_distance
 
-print(stations_by_distance(stations, ()))
