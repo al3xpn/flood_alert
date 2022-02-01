@@ -50,7 +50,7 @@ def rivers_by_station_number(stations, N):
     for station in stations:
         river2 = station.river
         if river2 == river1:
-            count +=
+            count = count + 1
         else:
             river_number_tuple = (river1, count)
             river_number_list.append(river_number_tuple)
@@ -62,8 +62,8 @@ def rivers_by_station_number(stations, N):
     y = 1
     M = N
     while river_number_list([N+y][1]) == x:
-        M +=
-        y +=
+        M = M + 1
+        y = y + 1
     river_number_list_N = river_number_list[0:M]
     return river_number_list_N
 
