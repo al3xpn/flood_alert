@@ -46,8 +46,8 @@ def rivers_by_station_number(stations, N):
     river_number_list = []
     river1 = 'test'
     count = 1
-    stations.sort()
-    for station in stations:
+    sorted_stations = sorted(stations)
+    for station in sorted_stations:
         river2 = station.river
         if river2 == river1:
             count = count + 1
@@ -56,14 +56,14 @@ def rivers_by_station_number(stations, N):
             river_number_list.append(river_number_tuple)
             count = 1
         river1 = river2
-    river_number_list.sort()
-    river_number_list.reverse()
-    x = river_number_list([N][1])
+    sorted_river_number_list = sorted(river_number_list)
+    sorted_river_number_list.reverse()
+    x = sorted_river_number_list([N][1])
     y = 1
     M = N
-    while river_number_list([N+y][1]) == x:
+    while sorted_river_number_list([N+y][1]) == x:
         M = M + 1
         y = y + 1
-    river_number_list_N = river_number_list[0:M]
+    river_number_list_N = sorted_river_number_list[0:M]
     return river_number_list_N
 
