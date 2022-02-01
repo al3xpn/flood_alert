@@ -21,7 +21,7 @@ def run():
                 single_tuple=tuple(single_list)     #turn it back to tuple
                 closest_10[n] = single_tuple       #replace item in list
     print(closest_10)
-
+    print('----')
     for n in range(len(furthest_10)):
         for station in stations:
             if station.name == furthest_10[n][0]:   #iterates over top 10 furthest
