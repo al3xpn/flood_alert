@@ -6,11 +6,9 @@ def run():
     """Requirements for Task 1D"""
     stations = build_station_list()
     rivers = list(rivers_with_station(stations))
-    print(rivers)
     num_rivers = len(rivers)
-    print(num_rivers)
-    sorted_rivers= rivers.sort()
-    first_10 = sorted_rivers[:10]
+    rivers.sort()
+    first_10 = rivers[:10]
 
     print('{} stations. First 10 - {}'.format(num_rivers, first_10) )
 
