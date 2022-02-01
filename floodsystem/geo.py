@@ -29,7 +29,7 @@ def stations_by_distance(stations, p):
     return sorted_name_distance
 
 def stations_within_radius(stations, centre, r):
-    """returns a list of all stationa within radius r of a geographic coordinate x"""
+    """Returns a list of all stations within radius r of a geographic coordinate x"""
     list_within_radius=[] #opens a list
     for station in stations: #iterate through stations
         coord = station.coord #forms a tuple of (... , ...)
@@ -39,3 +39,18 @@ def stations_within_radius(stations, centre, r):
         if distance <= r: #if station is within the radius
             list_within_radius.append(name) #adds the name of the station to a list
     return list_within_radius
+
+
+def rivers_with_station(stations):
+    """Returns a set with the names of the rivers with a monitoring station"""
+    set_of_rivers = set()
+    for station in stations:
+        set_of_rivers.add(station.river)
+
+        if station.river == None:
+            pass
+
+    return set_of_rivers
+
+def stations_by_river(stations):
+    """Returns a dictionary that maps river names """
