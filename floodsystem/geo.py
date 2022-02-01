@@ -39,3 +39,31 @@ def stations_within_radius(stations, centre, r):
         if distance <= r: #if station is within the radius
             list_within_radius.append(name) #adds the name of the station to a list
     return list_within_radius
+
+
+def rivers_by_station_number(stations, N):
+    rivers = ()
+    river_number_list = []
+    river1 = 'test'
+    count = 1
+    stations.sort()
+    for station in stations:
+        river2 = station.river
+        if river2 == river1:
+            count +=
+        else:
+            river_number_tuple = (river1, count)
+            river_number_list.append(river_number_tuple)
+            count = 1
+        river1 = river2
+    river_number_list.sort()
+    river_number_list.reverse()
+    x = river_number_list([N][1])
+    y = 1
+    M = N
+    while river_number_list([N+y][1]) == x:
+        M +=
+        y +=
+    river_number_list_N = river_number_list[0:M]
+    return river_number_list_N
+
