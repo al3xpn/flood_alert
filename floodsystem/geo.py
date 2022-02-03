@@ -67,3 +67,18 @@ def rivers_by_station_number(stations, N):
     river_number_list_N = sorted_river_number_list[0:M]
     return river_number_list_N
 
+def rivers_by_station_number2(stations, N):
+    river_list = ()
+    for station in stations:
+        river = station[5]
+        river_list.append(river)
+    river_list.sort()
+    river1 = "test"
+    count = 1
+    for river in river_list:
+        if river == river1:
+            count = count + 1
+        else:
+            river_number_tuple = (river)
+
+
