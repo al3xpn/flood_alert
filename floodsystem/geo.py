@@ -54,3 +54,12 @@ def rivers_with_station(stations):
 
 def stations_by_river(stations):
     """Returns a dictionary that maps river names """
+    dictionary = {}
+    for station in stations:
+        if station.river in dictionary:
+            dictionary[station.river].append(station.name)
+            dictionary[station.river].sort()
+        else:
+            dictionary[station.river] = station.name
+
+    return dictionary
