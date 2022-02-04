@@ -43,23 +43,23 @@ def stations_within_radius(stations, centre, r):
 
 def rivers_with_station(stations):
     """Returns a set with the names of the rivers with a monitoring station"""
-    set_of_rivers = set()
+    set_of_rivers = set()       #a set contains only unique elements so river names are not repeated
     for station in stations:
-        set_of_rivers.add(station.river)
+        set_of_rivers.add(station.river)     #just adds river name to the set
 
-        if station.river == None:
+        if station.river == None:         #river name might not always be available so is ignored
             pass
 
     return set_of_rivers
 
 def stations_by_river(stations):
     """Returns a dictionary that maps river names """
-    dictionary = {}
+    riv_stat_dict = {}       #forms empty dictionary
     for station in stations:
-        if station.river in dictionary:
-            dictionary[station.river].append(station.name)
-            dictionary[station.river].sort()
+        if station.river in riv_stat_dict:      #checks if the river name is already in the dictionary
+            riv_stat_dict[station.river].append(station.name)    #if it is then we add the station name to the already existing list
+            riv_stat_dict[station.river].sort()          #sort the list alphabetically
         else:
-            dictionary[station.river] = station.name
+            riv_stat_dict[station.river] = [station.name]       #if the river name is not in the dictionary it creates a new key and value
 
-    return dictionary
+    return riv_stat_dict

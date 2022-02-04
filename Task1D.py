@@ -12,12 +12,12 @@ def run():
 
     print('{} stations. First 10 - {}'.format(num_rivers, first_10) )
 
+    print('---')
 
-def run():
     """Prints the names of the stations located on the 'River Aire', 'River Cam' and 'River Thames'"""
-    stations = build_station_list()
-    river_stations = stations_by_river(stations)
-    river_aire = river_stations['River Aire']
+    stations = build_station_list()     #gets list of all stations
+    river_stations = stations_by_river(stations)     #forms the dictionary with the river names being the key and the the list of stations for that river being the value.
+    river_aire = river_stations['River Aire']           #extracts the list of stations for each river using the river name key
     river_cam = river_stations['River Cam']
     river_thames = river_stations['River Thames']
 
