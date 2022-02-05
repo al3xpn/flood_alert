@@ -31,7 +31,6 @@ def run():
                 furthest_10[n] = single_tuple
     print(furthest_10)
 
-
 if __name__ == "__main__":
     print("*** Task 1B: CUED Part IA Flood Warning System ***")
     run()
