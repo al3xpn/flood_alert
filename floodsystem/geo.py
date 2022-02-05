@@ -42,58 +42,32 @@ def stations_within_radius(stations, centre, r):
 
 
 def rivers_by_station_number(stations, N):
-    rivers = ()
-    river_number_list = []
-    river1 = 'test'
-    count = 1
-    sorted_stations = sorted(stations)
-    for station in sorted_stations:
-        river2 = station.river
-        if river2 == river1:
-            count = count + 1
-        else:
-            river_number_tuple = (river1, count)
-            river_number_list.append(river_number_tuple)
-            count = 1
-        river1 = river2
-    sorted_river_number_list = sorted(river_number_list)
-    sorted_river_number_list.reverse()
-    x = sorted_river_number_list([N][1])
-    y = 1
-    M = N
-    while sorted_river_number_list([N+y][1]) == x:
-        M = M + 1
-        y = y + 1
-    river_number_list_N = sorted_river_number_list[0:M]
-    return river_number_list_N
-
-def rivers_by_station_number2(stations, N):
-    river_list = ()
-    river_number_list = []
-    station_number = len(stations)
-    for i in range (station_number):
-        river = stations[i][5]
+    river_list = [] #opens a list of all the names of the rivers in 'stations' with each name repeated if it appears multiple times in 'stations'
+    river_number_dict = {} #opens a dictionary for the river names to be paired with the number of stations on the river
+    
+    #iterates through the 'stations' adding each river name to river_list
+    for i in range(len(stations)):
+        river = stations[i].river
         river_list.append(river)
-    river_list.sort()
-    river1 = river_list[0]
-    count = 0
-    for river in river_list:
-        if river == river1:
-            count = count + 1
-        else:
-            river_number_tuple = (river, count)
-            river_number_list.append(river_number_tuple)
-            count = 1
-        river1 = river
-    sorted_river_number_list = sorted(river_number_list)
-    sorted_river_number_list.reverse()
-    x = sorted_river_number_list([N][1])
-    y = 1
+
+    #iterates through the river_list adding the river names to the river dictionary and how many times they appear in the list
+    for j in range(len(river_list)):
+        if river_list[j] in river_number_dict: #if the river name is already in the dictionary, don't add it again - instead increase the number (key) by 1
+            river_number_dict[river_list[j]] = river_number_dict[river_list[j]] + 1
+        else: #if the river name is not already in the dictionary, add it with a key (number of stations) of 1
+            river_number_dict.update({river_list[j]: 1})
+    
+    river_number_list = list(river_number_dict.items()) #form a list from the dictionary
+    sorted_list = sorted_by_key(river_number_list, 1, reverse=True) #sort the list by each element's 'key' descending(the number associated with each river)
+    
+    #checking whether any of the tuples in the list after the Nth tuple have the same key (number of stations) as the Nth tuple
     M = N
-    while sorted_river_number_list([N+y][1]) == x:
+    while sorted_list[M][1] == sorted_list[M-1][1]:
         M = M + 1
-        y = y + 1
-    river_number_list_N = sorted_river_number_list[0:M]
+
+    #create a new list of the first N tuples in the sorted list, plus any extra tuples that have the same key as the Nth tuple
+    river_number_list_N = sorted_list[0:M]
+    
     return river_number_list_N
 
 
