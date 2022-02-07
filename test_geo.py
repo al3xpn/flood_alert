@@ -8,7 +8,7 @@ def test_stations_by_distance():
     p = (52.188229, 0.102169)
     stations = build_station_list()
     sorted_distance_list = stations_by_distance(stations, p)
-    assert len(sorted_distance_list) == 2165  #number of measuring stations it should return
+    assert len(sorted_distance_list) == 2164  #number of measuring stations it should return
 
     assert sorted_distance_list[-1][0] == 'Penberth'
 
@@ -38,4 +38,8 @@ def test_rivers_with_station():
 
 def test_stations_by_river():
     stations = build_station_list()
-    assert type(stations_by_river(stations)) == dict
+    rivers_dict = stations_by_river(stations)
+    assert type(rivers_dict) == dict
+
+    
+    
