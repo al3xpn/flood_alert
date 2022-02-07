@@ -6,10 +6,10 @@ geographical data.
 
 """
 
-from more_itertools import set_partitions
+#from more_itertools import set_partitions
 
 from floodsystem.station import MonitoringStation
-from floodsystem.stationdata import build_station_list
+#from floodsystem.stationdata import build_station_list
 from .utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 
