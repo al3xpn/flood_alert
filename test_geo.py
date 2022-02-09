@@ -39,7 +39,15 @@ def test_rivers_with_station():
 def test_stations_by_river():
     stations = build_station_list()
     rivers_dict = stations_by_river(stations)
+
     assert type(rivers_dict) == dict
+
+    assert rivers_dict['River Cam'][0] == 'Cam'
+
+    assert len(rivers_dict['River Thames']) > 0
+
+
+
 
     
     
