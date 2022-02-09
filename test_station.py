@@ -48,6 +48,44 @@ def test_inconsistent_typical_range_stations():
     assert inconsistent_typical_range_stations(test_list)[0] == 'some station'
 
 
+def test_typical_range_consistent():
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = (-2.3, -300)
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+
+    assert MonitoringStation.typical_range_consistent(s) == False
+
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = (-2.3, 300)
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+
+    assert MonitoringStation.typical_range_consistent(s) == True
+
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = None
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+
+    assert MonitoringStation.typical_range_consistent(s) == False
+
+
 
     
 
