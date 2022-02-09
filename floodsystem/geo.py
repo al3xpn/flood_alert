@@ -14,7 +14,7 @@ from .utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 
 def stations_by_distance(stations, p):
-    """Finds the distance from a coordinate 'p' to the stations, and orders it with the closest first"""
+    """B - Finds the distance from a coordinate 'p' to the stations, and orders it with the closest first"""
     name_distance_list = []
     for station in stations:
         coord = station.coord   #forms a tuple of (... , ...)
@@ -29,7 +29,7 @@ def stations_by_distance(stations, p):
     return sorted_name_distance
 
 def stations_within_radius(stations, centre, r):
-    """Returns a list of all stations within radius r of a geographic coordinate x"""
+    """C - Returns a list of all stations within radius r of a geographic coordinate x"""
     list_within_radius=[] #opens a list
     for station in stations: #iterate through stations
         coord = station.coord #forms a tuple of (... , ...)
@@ -43,18 +43,17 @@ def stations_within_radius(stations, centre, r):
 
 
 def rivers_with_station(stations):
-    """Returns a set with the names of the rivers with a monitoring station"""
+    """D - Returns a set with the names of the rivers with a monitoring station"""
     set_of_rivers = set()       #a set contains only unique elements so river names are not repeated
     for station in stations:
-        set_of_rivers.add(station.river)     #just adds river name to the set
-
         if station.river == None:         #river name might not always be available so is ignored
             pass
+        set_of_rivers.add(station.river)     #just adds river name to the set
 
     return set_of_rivers
 
 def stations_by_river(stations):
-    """Returns a dictionary that maps river names """
+    """D - Returns a dictionary that maps river names """
     riv_stat_dict = {}       #forms empty dictionary
     for station in stations:
         if station.river in riv_stat_dict:      #checks if the river name is already in the dictionary
@@ -66,6 +65,7 @@ def stations_by_river(stations):
     return riv_stat_dict
   
 def rivers_by_station_number(stations, N):
+    """E - Returns a list of tuples of the N rivers with the highest number of stations along them and the number of stations (including extra tuples at the end with the same number of stations as the Nth tuple)"""
     river_list = [] #opens a list of all the names of the rivers in 'stations' with each name repeated if it appears multiple times in 'stations'
     river_number_dict = {} #opens a dictionary for the river names to be paired with the number of stations on the river
     

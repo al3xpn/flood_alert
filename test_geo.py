@@ -81,27 +81,4 @@ def test_stations_by_river():
 
     assert type(rivers_dict) == dict
 
-<<<<<<< HEAD
-
-=======
-    assert rivers_dict['River Cam'][0] == 'Cam'
-
-    assert len(rivers_dict['River Thames']) > 0
-
-    s_id = "test-s-id"
-    m_id = "test-m-id"
-    label = "some station"
-    coord = (-2.0, 4.0)
-    trange = (-2.3, 2.5)
-    river = "River X"
-    town = "My Town"
-    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
-
-    test_list = [s]
-
-    assert (stations_by_river(test_list))['River X'][0] == 'some station'
-
-
-    
->>>>>>> 524aa492c67b77b0230c1411d5459fb5945f78da
     
