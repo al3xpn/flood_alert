@@ -41,6 +41,7 @@ def stations_within_radius(stations, centre, r):
     return list_within_radius
 
 
+
 def rivers_with_station(stations):
     """Returns a set with the names of the rivers with a monitoring station"""
     set_of_rivers = set()       #a set contains only unique elements so river names are not repeated
@@ -63,3 +64,36 @@ def stations_by_river(stations):
             riv_stat_dict[station.river] = [station.name]       #if the river name is not in the dictionary it creates a new key and value
 
     return riv_stat_dict
+  
+def rivers_by_station_number(stations, N):
+    river_list = [] #opens a list of all the names of the rivers in 'stations' with each name repeated if it appears multiple times in 'stations'
+    river_number_dict = {} #opens a dictionary for the river names to be paired with the number of stations on the river
+    
+    #iterates through the 'stations' adding each river name to river_list
+    for i in range(len(stations)):
+        river = stations[i].river
+        river_list.append(river)
+
+    #iterates through the river_list adding the river names to the river dictionary and how many times they appear in the list
+    for j in range(len(river_list)):
+        if river_list[j] in river_number_dict: #if the river name is already in the dictionary, don't add it again - instead increase the number (key) by 1
+            river_number_dict[river_list[j]] = river_number_dict[river_list[j]] + 1
+        else: #if the river name is not already in the dictionary, add it with a key (number of stations) of 1
+            river_number_dict.update({river_list[j]: 1})
+    
+    river_number_list = list(river_number_dict.items()) #form a list from the dictionary
+    sorted_list = sorted_by_key(river_number_list, 1, reverse=True) #sort the list by each element's 'key' descending(the number associated with each river)
+    
+    #checking whether any of the tuples in the list after the Nth tuple have the same key (number of stations) as the Nth tuple
+    M = N
+    while sorted_list[M][1] == sorted_list[M-1][1]:
+        M = M + 1
+
+    #create a new list of the first N tuples in the sorted list, plus any extra tuples that have the same key as the Nth tuple
+    river_number_list_N = sorted_list[0:M]
+    
+    return river_number_list_N
+
+
+
+
