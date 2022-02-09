@@ -3,6 +3,7 @@
 from floodsystem.geo import rivers_with_station, stations_by_distance, stations_by_river, stations_within_radius
 from floodsystem.stationdata import build_station_list
 from haversine import haversine
+from floodsystem.station import MonitoringStation
 stations = build_station_list()
 
 def test_stations_by_distance():
@@ -67,7 +68,18 @@ def test_stations_by_river():
 
     assert len(rivers_dict['River Thames']) > 0
 
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = (-2.3, 2.5)
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
 
+    test_list = [s]
+
+    assert (stations_by_river(test_list))['River X'][0] == 'some station'
 
 
     
