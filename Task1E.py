@@ -12,5 +12,10 @@ def run():
     print(river_tuples_nine)
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     print("*** Task 1C: CUED Part IA Flood Warning System ***")
     run()
+=======
+    print("*** Task 1E: CUED Part IA Flood Warning System ***")
+    run()
+>>>>>>> ad8421f27cbf30156fefc368e5b49f13c5fe49de
