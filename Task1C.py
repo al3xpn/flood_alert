@@ -1,6 +1,6 @@
 from floodsystem.geo import stations_within_radius
 from floodsystem.stationdata import build_station_list
-from test_geo import test_stations_within_radius
+
 def run():
 
     #make a list
@@ -19,5 +19,3 @@ def run():
 if __name__ == "__main__":
     print("*** Task 1C: CUED Part IA Flood Warning System ***")
     run()
-
-test_stations_within_radius()
