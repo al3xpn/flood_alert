@@ -44,17 +44,14 @@ class MonitoringStation:
 
     def typical_range_consistent(self):
     
-        if self.typical_range == None:
+        if self.typical_range == None:   #if there is no range data, it is 'inconsistent so returns False'
             return False
 
-        elif (self.typical_range)[1] < (self.typical_range)[0]:
+        elif (self.typical_range)[1] < (self.typical_range)[0]:     #if the high range data is higher than the low range data, it is inconsistent so returns false
             return False
 
-        else:
+        else:    #returns True when the data is consistent
             return True
-
-
-
 
 def inconsistent_typical_range_stations(stations):
     inconsistent_list = []
@@ -63,7 +60,7 @@ def inconsistent_typical_range_stations(stations):
             pass
 
         else:
-            inconsistent_list.append(station.name)
+            inconsistent_list.append(station.name)    #appends inconsistent list with stations that have inconsistent data
 
     return inconsistent_list
 
