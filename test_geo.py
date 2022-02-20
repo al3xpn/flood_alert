@@ -33,6 +33,11 @@ def test_stations_within_radius():
     stations_list = stations_within_radius(stations, centre, 200000000)
     assert len(stations_list) >= 0
 
+    #checks that the data type of the output of the function is a list
+    centre = (52.2053, 0.1218)
+    stations_list = stations_within_radius(stations, centre, 10)
+    assert type(stations_list) == list
+
 def test_rivers_with_station():
     """Tests the function rivers_by_station() in the geo.py submodule"""
     rivers = (rivers_with_station(stations))
@@ -54,11 +59,6 @@ def test_rivers_with_station():
     assert test[0] == False
 
 
-
-    #checks that the data type of the output of the function is a list
-    centre = (52.2053, 0.1218)
-    stations_list = stations_within_radius(stations, centre, 10)
-    assert type(stations_list) == list
     
 def test_rivers_by_station_number():
 
@@ -81,4 +81,20 @@ def test_stations_by_river():
 
     assert type(rivers_dict) == dict
 
+    assert rivers_dict['River Cam'][0] == 'Cam'
+
+    assert len(rivers_dict['River Thames']) > 0
+
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = (-2.3, 2.5)
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+
+    test_list = [s]
+
+    assert (stations_by_river(test_list))['River X'][0] == 'some station'
     
