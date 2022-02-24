@@ -43,7 +43,7 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-    
+        """For Task 1F"""
         if self.typical_range == None:   #if there is no range data, it is 'inconsistent so returns False'
             return False
 
@@ -52,6 +52,19 @@ class MonitoringStation:
 
         else:    #returns True when the data is consistent
             return True
+
+    def relative_water_level(self):
+        """For Task 2B"""
+        if MonitoringStation.typical_range_consistent(self) == False:
+            return None
+
+        if self.latest_level < 0 or self.latest_level == None:
+            return None
+
+        relative_water_level = float(round(self.latest_level/self.typical_range, 2))
+
+        return relative_water_level
+
 
 def inconsistent_typical_range_stations(stations):
     inconsistent_list = []
