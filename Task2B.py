@@ -11,7 +11,11 @@ def test_stations_level_over_threshold(): #THIS PART IS THE TEST NOT THE TASK
     assert len(x) > 0
 
 def run():
-    x = stations_level_over_threshold(stations, 0.8)
+
+    #form list of stations over the threshold of 0.8
+    x = stations_level_over_threshold(stations, 0.8) 
+
+    #iterates through formed list to output required information
     for n in range(len(x)):
         print("{}, {}".format(x[n][0], x[n][1]))
 
