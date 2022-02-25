@@ -16,3 +16,6 @@ def stations_level_over_threshold(stations, tol):
     output.reverse()
     return output
 
+def stations_highest_rel_level(stations, N):
+    stations_all = stations_level_over_threshold(stations, 0)
+    return stations_all[:N]
