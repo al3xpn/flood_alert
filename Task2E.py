@@ -2,7 +2,7 @@ from floodsystem.plot import plot_water_levels
 from floodsystem.stationdata import build_station_list
 from floodsystem.datafetcher import fetch_measure_levels
 import datetime
-
+import numpy as np
 
 def run():
     """Plots a graph of the water levels against time for the past 10 days of the 5 stations which the current relative water level is greatest."""
@@ -12,7 +12,7 @@ def run():
     test = stations[0:5]
     for station in test:
         dates , levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        print(plot_water_levels(station, dates, levels))
+        plot_water_levels(station, dates, levels)
     #print(levels)
     #print(type(dates[0]))
     #for n in range(len(dates)):
