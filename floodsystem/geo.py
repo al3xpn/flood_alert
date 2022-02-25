@@ -46,10 +46,11 @@ def rivers_with_station(stations):
     """D - Returns a set with the names of the rivers with a monitoring station"""
     set_of_rivers = set()       #a set contains only unique elements so river names are not repeated
     for station in stations:
-        if station.river == None:         #river name might not always be available so is ignored
-            pass
         set_of_rivers.add(station.river)     #just adds river name to the set
 
+        if station.river == None:         #river name might not always be available so is ignored
+            pass
+            set_of_rivers.add(station.river)     #just adds river name to the set
     return set_of_rivers
 
 def stations_by_river(stations):
