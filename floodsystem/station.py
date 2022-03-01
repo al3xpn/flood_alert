@@ -47,7 +47,7 @@ class MonitoringStation:
         if self.typical_range == None:   #if there is no range data, it is 'inconsistent so returns False'
             return False
 
-        elif (self.typical_range)[1] < (self.typical_range)[0]:     #if the high range data is higher than the low range data, it is inconsistent so returns false
+        elif self.typical_range[1] < self.typical_range[0]:     #if the high range data is higher than the low range data, it is inconsistent so returns false
             return False
 
         else:    #returns True when the data is consistent
@@ -62,19 +62,6 @@ class MonitoringStation:
                 ratio = ((self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0]))
                 return ratio
 
-        
-
-    def relative_water_level(self):
-        """For Task 2B"""
-        if MonitoringStation.typical_range_consistent(self) == False:
-            return None
-
-        if self.latest_level < 0 or self.latest_level == None:
-            return None
-
-        relative_water_level = float(round(self.latest_level/self.typical_range, 2))
-
-        return relative_water_level
 
 
 def inconsistent_typical_range_stations(stations):
