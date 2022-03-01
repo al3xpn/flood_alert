@@ -52,27 +52,20 @@ class MonitoringStation:
 
         else:    #returns True when the data is consistent
             return True
-    
-    def relative_water_level(self):
-        check = self.typical_range_consistent()
-        if check == True:
-            if self.latest_level == None:
-                return None
-            else:
-                ratio = ((self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0]))
-                return ratio
 
-        
 
     def relative_water_level(self):
         """For Task 2B"""
         if MonitoringStation.typical_range_consistent(self) == False:
             return None
 
-        if self.latest_level < 0 or self.latest_level == None:
+        if self.latest_level == None:
+            return None
+            
+        if self.latest_level < 0:
             return None
 
-        relative_water_level = float(round(self.latest_level/self.typical_range, 2))
+        relative_water_level = float(round((self.latest_level-self.typical_range[0])/(self.typical_range[1] - self.typical_range[0]), 2))
 
         return relative_water_level
 
