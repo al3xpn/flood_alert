@@ -16,11 +16,6 @@ def run():
     top_5 = stations_highest_rel_level(stations, 5)   #gets list of tuples for top 5 stations with highest relative water level , tuple = (station (object), relative level)
     top_5_stations = []   #create empty list to put just the station objects into
 
-    xtest = [1, 2, 3, 4, 5, 6, 7]
-    ytest = [1, 4, 9, 16, 25, 36, 49]
-    poly, d0 = polyfit(xtest, ytest, 4)
-    print(poly(3))
-
     for n in range(len(top_5)):
         top_5_stations.append(top_5[n][0])    #puts just the station objects in the list
 
