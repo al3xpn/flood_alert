@@ -4,14 +4,14 @@ from numpy.linalg import LinAlgError
 
 def polyfit(dates, levels, p):
     """"""
-    x = plt.dates.date2num(dates)
-    y = levels
+    x = plt.dates.date2num(dates)        #turns dates into a list of floats instead of datetime objects
+    y = levels                  #just the levels of river at given date
 
-    d0 = x[0]
+    d0 = x[0]               #offset (first date value)
 
-    p_coeff = np.polyfit(x - d0, y, p)
-
-    poly = np.poly1d(p_coeff)
+    p_coeff = np.polyfit(x - d0, y, p)  #x - d0 is required as dates.date2num returns the number of days since the origin of the gregorian calendar so gives too large values and causes rounding errors.   
+    # Find coefficients of best-fit polynomial f(x) of degree 4
+    poly = np.poly1d(p_coeff)   # Convert coefficient into a polynomial that can be evaluated
 
     return poly, d0
 
