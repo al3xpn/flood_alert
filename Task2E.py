@@ -1,27 +1,25 @@
+from floodsystem.flood import stations_highest_rel_level
 from floodsystem.plot import plot_water_levels
-from floodsystem.stationdata import build_station_list
+from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 import datetime
-import numpy as np
+from floodsystem.station import MonitoringStation
 
 def run():
     """Plots a graph of the water levels against time for the past 10 days of the 5 stations which the current relative water level is greatest."""
     stations = build_station_list()
-    #greatest_5 = stations_highest_rel_level(stations, 5)
+    update_water_levels(stations)
     dt = 10
-    test = stations[0:5]
-    for station in test:
+    top_5 = stations_highest_rel_level(stations, 5)
+    top_5_stations = []
+
+    for n in range(len(top_5)):
+        top_5_stations.append(top_5[n][0])
+
+    for station in top_5_stations:
         dates , levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
         plot_water_levels(station, dates, levels)
-    #print(levels)
-    #print(type(dates[0]))
-    #for n in range(len(dates)):
-        #dates[n] = dates[n].strftime("%m/%d/%Y")
-    #print(type(dates[0]))
-    #print(dates)
-    #for station in greatest_5:
-        #dates , levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        #print(plot_water_levels(station, dates, levels))
+
 
 
 
