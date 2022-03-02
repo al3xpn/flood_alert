@@ -5,10 +5,11 @@ def plot_water_levels(station, dates, levels):
     """"""
     low_range_list = [station.typical_range[0]] * len(dates)
     high_range_list = [station.typical_range[1]] * len(dates)
-    plt.plot(dates, low_range_list)
-    plt.plot(dates, high_range_list)
-    plt.plot(dates, levels)
+    plt.plot(dates, low_range_list, label = "Low range")
+    plt.plot(dates, high_range_list, label = "High range")
+    plt.plot(dates, levels , label = "Data")
 
+    plt.legend(loc='upper right')
     plt.xlabel('Date/Time')
     plt.ylabel('Water level (m)')
     plt.title(station.name)
