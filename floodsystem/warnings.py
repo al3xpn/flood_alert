@@ -54,21 +54,21 @@ def risk_assessment(stations):
                 if gradient == None:
                     continue
 
-                if y > 10 :
+                if y > 2 :
                     tuple4 = [station.name, 4]
             
-                    if gradient <= -1 and y < 11:
+                    if gradient <= -1 and y < 3:
                         tuple4[1] -= 1
                     tuple = (tuple4[0], tuple4[1])
                     list_tuples.append(tuple)
 
-                elif y > 5:
+                elif y > 1.6:
                     tuple3 = [station.name, 3]
             
-                    if gradient >= 1 and y > 9:
+                    if gradient >= 1 and y > 1.9:
                         tuple3[1] += 1
                 
-                    elif gradient <= -1 and y < 6:
+                    elif gradient <= -1 and y < 1.7:
                         tuple3[1] -= 1
                     tuple = (tuple3[0], tuple3[1])
                     list_tuples.append(tuple)
@@ -76,10 +76,10 @@ def risk_assessment(stations):
                 elif y > 0.5:
                     tuple2 = [station.name, 2]
            
-                    if gradient >= 1 and y > 4:
+                    if gradient >= 1 and y > 1.2:
                         tuple2[1] += 1
                 
-                    elif gradient <= -1 and y < 1:
+                    elif gradient <= -1 and y < 0.7:
                         tuple2[1] -= 1
                     tuple = (tuple2[0], tuple2[1])
                     list_tuples.append(tuple)

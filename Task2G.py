@@ -29,6 +29,7 @@ def run():
             low.append(tuple)
         else:
             print("error")
+    print("Severe: 4, High:3")
     print(severe)
     print(high)
 
