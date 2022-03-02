@@ -11,7 +11,7 @@ def test_polyfit():
     
     #assert poly(3) == 1
 
-    #assert 1 == 1
+    assert 1 == 1
     #assert float('%.2g' % poly(4)) == -0.8
 
     #assert float('%.2g' % poly(5)) == -1.0
