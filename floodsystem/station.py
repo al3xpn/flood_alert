@@ -50,6 +50,9 @@ class MonitoringStation:
         elif self.typical_range[1] < self.typical_range[0]:     #if the high range data is higher than the low range data, it is inconsistent so returns false
             return False
 
+        elif (self.typical_range[1]-self.typical_range[0]) > 300:
+            return False
+
         else:    #returns True when the data is consistent
             return True
 
@@ -61,9 +64,16 @@ class MonitoringStation:
         if check == True:
             if self.latest_level == None:
                 return None
+
             else:
-                ratio = ((self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0]))  
-                return ratio
+                ratio = ((self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0]))
+                
+                if ratio > 300:
+                    return None
+                else:
+                    return ratio
+        else:
+            return None
 
 
 def inconsistent_typical_range_stations(stations):

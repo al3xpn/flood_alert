@@ -13,7 +13,7 @@ def run():
 
     #outputs these tuples in the form: name, relative water level
     for i in range(len(highest_ten)):
-        print("{}, {}".format(highest_ten[i][0], highest_ten[i][1]))
+        print("{}, {}".format(highest_ten[i][0].name, highest_ten[i][1]))
 
 if __name__ == "__main__":
     print("*** Task 2C: CUED Part IA Flood Warning System ***")

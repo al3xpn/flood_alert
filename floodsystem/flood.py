@@ -1,7 +1,8 @@
 from floodsystem.station import MonitoringStation
 from .utils import sorted_by_key
+from floodsystem.station import MonitoringStation
 
-def stations_level_over_threshold(stations, tol): #nputs a list of stations with their relative water level and a tolerance number and returns a list of all stations with a relative water level above the tolerance in descending order
+def stations_level_over_threshold(stations, tol): #inputs a list of stations with their relative water level and a tolerance number and returns a list of all stations with a relative water level above the tolerance in descending order
 
     #opens empty list of tuples
     list_of_tuples = []
@@ -12,7 +13,7 @@ def stations_level_over_threshold(stations, tol): #nputs a list of stations with
         #checks the validty of the informaton in the list
         x = stations[n].typical_range_consistent()
         if x == True:
-
+            
             #if passes checks, get the relatve water level of the station
             y = stations[n].relative_water_level()
 
@@ -24,7 +25,7 @@ def stations_level_over_threshold(stations, tol): #nputs a list of stations with
             elif y > tol:
 
                 #list of tuples adds onto the end a tuple of the station's name and then its relative water level
-                tuple = (stations[n].name, stations[n].relative_water_level())
+                tuple = (stations[n], stations[n].relative_water_level())
                 list_of_tuples.append(tuple)
     
     #list of tuples is sorted by ascending relative water level and then reversed and the final list is returned
