@@ -68,7 +68,7 @@ class MonitoringStation:
             else:
                 ratio = ((self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0]))
                 
-                if ratio > 300:
+                if ratio > 300:   #this is done mainly to remove Letcombe Bassett from the data as the station is obviously broken
                     return None
                 else:
                     return ratio

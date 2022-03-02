@@ -1,5 +1,6 @@
 import matplotlib as plt
 import numpy as np
+from numpy.linalg import LinAlgError
 
 def polyfit(dates, levels, p):
     """"""
@@ -18,7 +19,7 @@ def get_gradient(dates, levels, p):
     if len(dates) != 0:
         try:
             p_coeff = np.polyfit(dates - dates[-1], levels, p)     
-        except LinalgError:
+        except LinAlgError:
             pass
         poly = np.poly1d(p_coeff)   
         derivative = np.polyder(poly)
