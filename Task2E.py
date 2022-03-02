@@ -1,8 +1,8 @@
 from floodsystem.plot import plot_water_levels
-from floodsystem.stationdata import build_station_list
+from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 import datetime
-import numpy as np
+from floodsystem.flood import stations_highest_rel_level
 
 def run():
     """Plots a graph of the water levels against time for the past 10 days of the 5 stations which the current relative water level is greatest."""
