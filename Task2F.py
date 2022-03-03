@@ -3,7 +3,8 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 import datetime
 from floodsystem.flood import stations_highest_rel_level
-from floodsystem.analysis import polyfit
+import matplotlib
+
 def run():
     """Plots graphs for the 5 stations with highest current relative water level. Plots the level data extending back 2 days. Also plots high/low range and best fit of polynomial of degree 4 against time.""" 
     stations = build_station_list()
@@ -18,7 +19,8 @@ def run():
     for station in top_5_stations:
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))   #gathers dates and the levels at those dates
         plot_water_level_with_fit(station, dates, levels, 4)    #plots graph
-        
+
+    print(matplotlib.__version__)        
     
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IA Flood Warning System ***")
