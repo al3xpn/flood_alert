@@ -1,10 +1,10 @@
-import matplotlib as plt
+import matplotlib 
 import numpy as np
 from numpy.linalg import LinAlgError
 
 def polyfit(dates, levels, p):
     """"""
-    x = plt.dates.date2num(dates)        #turns dates into a list of floats instead of datetime objects
+    x = matplotlib.dates.date2num(dates)        #turns dates into a list of floats instead of datetime objects
     y = levels                  #just the levels of river at given date
 
     d0 = x[0]               #offset (first date value)
