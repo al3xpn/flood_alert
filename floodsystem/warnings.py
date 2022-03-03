@@ -1,15 +1,7 @@
-import numpy as np
-from sympy import lowergamma
-from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.analysis import get_gradient
-import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
+from datetime import timedelta
 from floodsystem.datafetcher import fetch_measure_levels
-import matplotlib
-from floodsystem.station import MonitoringStation
-
-
-
+import matplotlib.dates
 
 def risk_assessment(stations):
 
