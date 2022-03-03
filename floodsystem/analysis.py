@@ -8,8 +8,8 @@ def polyfit(dates, levels, p):
     y = levels                  #just the levels of river at given date
 
     d0 = x[0]               #offset (first date value)
-
-    p_coeff = np.polyfit(x - d0, y, p)  #x - d0 is required as dates.date2num returns the number of days since the origin of the gregorian calendar so gives too large values and causes rounding errors.   
+    #x - d0 is required as dates.date2num returns the number of days since the origin of the gregorian calendar so gives too large values and causes rounding errors.
+    p_coeff = np.polyfit(x - d0, y, p)    
     # Find coefficients of best-fit polynomial f(x) of degree 4
     poly = np.poly1d(p_coeff)   # Convert coefficient into a polynomial that can be evaluated
 
