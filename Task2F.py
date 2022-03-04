@@ -12,7 +12,7 @@ def run():
     dt = 2   #number of days extending back
     top_5 = stations_highest_rel_level(stations, 5)   #gets list of tuples for top 5 stations with highest relative water level , tuple = (station (object), relative level)
     top_5_stations = []   #create empty list to put just the station objects into
-
+    
     for n in range(len(top_5)):
         top_5_stations.append(top_5[n][0])    #puts just the station objects in the list
 
