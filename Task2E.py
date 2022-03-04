@@ -9,15 +9,21 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     dt = 10     #number of days to extend back to
-    top_5 = stations_highest_rel_level(stations, 5)    #getting top 5 stations with highest relative level, list of tuples: tuple = (station(object), relative level)
-    top_5_stations = []
-
-    for n in range(len(top_5)):
-        top_5_stations.append(top_5[n][0])      #once again just create a list of the top 5 station objects
-
-    for station in top_5_stations:
+    highest = stations_highest_rel_level(stations, 20)    #getting top 20 stations with highest relative level, list of tuples: tuple = (station(object), relative level)
+    highest_stations = []
+    for n in range(len(highest)):
+        highest_stations.append(highest[n][0])      #once again just create a list of the highest rel level station objects
+    counter = 0      #create a counter
+    for station in highest_stations:
         dates , levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        plot_water_levels(station, dates, levels)   #plots graph of levels against time, including lines for typical high/low ranges
+        if len(dates) == len(levels):               #had to add this check because the code before this worked fine for most stations, except one that did not have the same number of levels compared to the dates recorded
+            plot_water_levels(station, dates, levels)   #plots graph of levels against time, including lines for typical high/low ranges
+            counter += 1
+        else: 
+            pass
+        if counter == 5:
+            break
+    
 
 
 
