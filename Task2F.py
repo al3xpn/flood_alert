@@ -18,9 +18,7 @@ def run():
 
     for station in top_5_stations:
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))   #gathers dates and the levels at those dates
-        plot_water_level_with_fit(station, dates, levels, 4)    #plots graph
-
-    print(matplotlib.__version__)        
+        plot_water_level_with_fit(station, dates, levels, 4)    #plots graph  
     
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IA Flood Warning System ***")
