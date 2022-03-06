@@ -11,7 +11,7 @@ def test_polyfit():
     dt=2
     station = stations[(random.randint(1, len(stations)))]          #gets a random station from the list of stations
     dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))            #gathers dates and levels for that station
-    poly, d0 = polyfit(dates, levels, 6)                #forms the polynomial of best fit for the given data
+    poly, d0 = polyfit(dates, levels, 3)                #forms the polynomial of best fit for the given data
 
     assert float('%.1g' % poly(0)) == float('%.1g' % station.latest_level)     #asserts that the result from the polynomial is equal to the relative water level at that time (to 1 sig fig) e.g. current time
 
