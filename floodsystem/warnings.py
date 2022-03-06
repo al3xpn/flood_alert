@@ -13,26 +13,40 @@ from floodsystem.station import MonitoringStation
 
 def risk_assessment(stations):
 
+        #open a list of tuples
         list_tuples = []
+
+        #iterates through stations
         for station in stations:
+
+            #if there is no water level data, ignore this station
             if station.relative_water_level() == None:
                 pass
+
+            #if there is data, find the relative water level of the station through function relative_water_level
             else:
                 y = station.relative_water_level()
             dt = 2
+
+            #fetch data for water levels each day
             dates, levels = fetch_measure_levels(station.measure_id, timedelta(days=dt))
+            #plot this data
             dates_num = matplotlib.dates.date2num(dates)
+
             data_values = {}
+            #add the levels to a dictionary
             for i in range(len(dates_num)-1):
                 try:
                     data_values[dates_num[i]] = levels[i]
                 except:
                     pass
             values_to_remove = []
+            #if any of the levels in the dictionary are not of the type float, add them to a list to be removed
             for level in data_values.values():
                 if type(level) != float:
                     x = (level[0], level[1])
                     values_to_remove.append(x)
+            #
             for level in values_to_remove:
                 a = list(level)
                 data_values.pop(list(data_values.keys())[list(data_values.values()).index(a)])

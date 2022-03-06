@@ -10,9 +10,13 @@ from floodsystem.warnings import risk_assessment
 from floodsystem.station import MonitoringStation
 
 def run():
+    #create list of stations
     stations = build_station_list()
+
+    #update their water level data
     update_water_levels(stations)
     
+    #runs code to divide stations into lists of tuples based on their risk of flooding
     x = risk_assessment(stations)
     severe = []
     high = []
