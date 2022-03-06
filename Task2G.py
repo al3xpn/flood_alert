@@ -5,7 +5,7 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     
-    x = risk_assessment(stations)
+    x = risk_assessment(stations[:500])
     severe = []
     high = []
     moderate = []
