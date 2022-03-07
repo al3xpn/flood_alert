@@ -10,6 +10,8 @@ def run():
     
     #runs code to divide stations into lists of tuples based on their risk of flooding
     x = risk_assessment(stations)
+
+    #split stations into 4 lists of tuples based on the number in their tuple
     severe = []
     high = []
     moderate = []
@@ -25,6 +27,8 @@ def run():
             low.append(tuple)
         else:
             print("error")
+    
+    #print the severe and high station tuples
     print("Severe: 4, High:3")
     print(severe)
     print(high)
