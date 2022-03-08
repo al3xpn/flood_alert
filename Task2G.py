@@ -8,8 +8,9 @@ def run():
     #update their water level data
     update_water_levels(stations)
     
+
     #runs code to divide stations into lists of tuples based on their risk of flooding
-    x = risk_assessment(stations)
+    x = risk_assessment(stations[:500])
 
     #split stations into 4 lists of tuples based on the number in their tuple
     severe = []
