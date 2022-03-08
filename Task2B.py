@@ -4,9 +4,6 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 stations = build_station_list()
 update_water_levels(stations)
 
-def test_stations_level_over_threshold(): #THIS PART IS THE TEST NOT THE TASK
-    x = stations_level_over_threshold(stations, 0.8)
-    assert len(x) > 0
 
 def run():
 

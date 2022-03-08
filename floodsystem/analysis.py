@@ -16,15 +16,22 @@ def polyfit(dates, levels, p):
     return poly, d0
 
 def get_gradient(dates, levels, p):
+
+    #check it is not an empty set
     if len(dates) != 0:
+        #plot a graph of the dates and levels
         try:
             p_coeff = np.polyfit(dates - dates[-1], levels, p)     
         except LinAlgError:
             pass
         poly = np.poly1d(p_coeff)   
+        #find the derivative of the graph
         derivative = np.polyder(poly)
+        #set today as the correct date
         today = dates[0] - dates[-1]
+        #find gradient of poly graph (value of derivative graph) at today
         gradient = derivative(today)
+        #output that gradient
         return gradient
         
     else:
