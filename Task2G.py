@@ -1,3 +1,4 @@
+from floodsystem.flood import stations_level_over_threshold
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.warnings import risk_assessment
 
@@ -10,7 +11,7 @@ def run():
     
 
     #runs code to divide stations into lists of tuples based on their risk of flooding
-    x = risk_assessment(stations)
+    x = risk_assessment(stations[500:1000])
 
     #split stations into 4 lists of tuples based on the number in their tuple
     severe = []
