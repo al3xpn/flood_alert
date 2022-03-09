@@ -77,27 +77,27 @@ def risk_assessment(stations):
                     #add tuple to list of tuples
                     list_tuples.append(tuple)
 
-                #if between 1.6 and 2, high
-                elif y > 1.6:
+                #if between 1.4 and 2, high
+                elif y > 1.4:
                     el3 = [station.name, 3]
                     
-                    #if grad > 1 and rel water level >1.9, move up, for teh following inequalities move down
-                    if gradient >= 1 and y > 1.9:
+                    #if grad > 1 and rel water level >1.75, move up, for teh following inequalities move down
+                    if gradient >= 1 and y > 1.75:
                         el3[1] += 1
                 
-                    elif gradient <= -1 and y < 1.7:
+                    elif gradient <= -1 and y < 1.55:
                         el3[1] -= 1
                     tuple = (el3[0], el3[1])
                     list_tuples.append(tuple)
 
-                #if between 0.5 and 1.6, moderate
+                #if between 0.5 and 1.4, moderate
                 elif y > 0.5:
                     el2 = [station.name, 2]
            
-                    if gradient >= 1 and y > 1.2:
+                    if gradient >= 1 and y > 1.175:
                         el2[1] += 1
                 
-                    elif gradient <= -1 and y < 0.7:
+                    elif gradient <= -1 and y < 0.725:
                         el2[1] -= 1
                     tuple = (el2[0], el2[1])
                     list_tuples.append(tuple)

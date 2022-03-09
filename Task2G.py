@@ -10,7 +10,7 @@ def run():
     
 
     #runs code to divide stations into lists of tuples based on their risk of flooding
-    x = risk_assessment(stations[:500])
+    x = risk_assessment(stations)
 
     #split stations into 4 lists of tuples based on the number in their tuple
     severe = []
